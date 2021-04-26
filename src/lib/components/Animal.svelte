@@ -1,15 +1,16 @@
 <script>
+	import type { Readable } from 'svelte/store';
 	import type { Animal } from '$lib/animal';
 
-	export let animal: Animal;
+	export let animal: Readable<Animal>;
 </script>
 
 <span
 	class="animal"
-	style="--color: #{animal.color}; --size: {animal.size}px; --x-offset: {animal.position
-		.x}px; --y-offset: {animal.position.y}px"
+	style="--color: #{$animal.color}; --size: {$animal.size}px; --x-offset: {$animal.position
+		.x}px; --y-offset: {$animal.position.y}px"
 >
-	{animal.name}
+	{$animal.name}
 </span>
 
 <style>
@@ -20,5 +21,6 @@
 		left: calc(50vw + var(--x-offset));
 		font-size: var(--size);
 		color: var(--color);
+		z-index: -1000;
 	}
 </style>

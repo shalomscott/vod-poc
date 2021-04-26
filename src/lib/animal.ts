@@ -1,4 +1,4 @@
-import { randomColor, getAnimalName, randomPointPixels, randomInt } from '$lib/generation';
+import { randomColor, randomAnimalName, randomPointPixels, randomInt } from '$lib/generation';
 import type { Point } from './types';
 
 const usedNames: Record<string, boolean> = {};
@@ -12,9 +12,9 @@ export class Animal {
 	position: Point;
 
 	constructor() {
-		let name = getAnimalName();
+		let name = randomAnimalName();
 		while (usedNames[name]) {
-			name = getAnimalName();
+			name = randomAnimalName();
 		}
 		usedNames[name] = true;
 		this.name = name;
@@ -23,7 +23,7 @@ export class Animal {
 	}
 
 	update(timestamp: number): this {
-		this.size = randomInt(1, 50);
+		this.size = randomInt(10, 15);
 		this.color = randomColor();
 		this.position = randomPointPixels(this.position);
 		this.timestamp = timestamp;

@@ -16,12 +16,31 @@
 </script>
 
 <script>
-	import Generator from './_Generator.svelte';
-	import Player from './_Player.svelte';
+	import { time } from '$lib/stores';
+	import { AnimalEngine } from '$lib/animal-engine';
+
+	import Player from '$lib/components/Player.svelte';
+	import Animal from '$lib/components/Animal.svelte';
+	import Generator from '$lib/components/Generator.svelte';
 
 	export let timespan: TimeSpan;
+	$time = timespan.start;
+
+	const animalEngine = new AnimalEngine();
+	const animals = animalEngine.animals;
+
+	function mainLoop() {
+		requestAnimationFrame(async () => {
+			await animalEngine.updateAnimals($time);
+			mainLoop();
+		});
+	}
 </script>
 
-<Generator {timespan} />
+{#each Object.entries($animals) as [name, animal] (name)}
+	<Animal {animal} />
+{/each}
 
-<Player {timespan} />
+<Player {timespan}>
+	<Generator {animalEngine} {timespan} on:generated={mainLoop} />
+</Player>

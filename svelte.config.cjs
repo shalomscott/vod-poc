@@ -22,6 +22,10 @@ module.exports = {
 		target: '#svelte',
 
 		ssr: false,
+		prerender: {
+			crawl: false,
+			enabled: false
+		},
 
 		vite: {
 			ssr: {

@@ -1,3 +1,11 @@
+html {
+	height: 90%;
+}
+
 body {
+	position: relative;
+	height: 100%;
+	margin: 1rem;
 	display: flex;
+	flex-direction: column;
 }

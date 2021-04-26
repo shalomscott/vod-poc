@@ -1,9 +1,9 @@
-import { uniqueNamesGenerator, adjectives, colors, animals } from 'unique-names-generator';
 import type { Point } from './types';
+import { uniqueNamesGenerator, adjectives, animals } from 'unique-names-generator';
 
-export function getAnimalName(): string {
+export function randomAnimalName(): string {
 	return uniqueNamesGenerator({
-		dictionaries: [adjectives, colors, animals],
+		dictionaries: [adjectives, animals],
 		separator: '-'
 	});
 }
