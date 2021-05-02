@@ -39,9 +39,9 @@
 			case 'play':
 				return now - last;
 			case 'fast-forward':
-				return (now - last) * 10;
+				return (now - last) * 20;
 			case 'fast-reverse':
-				return (last - now) * 10;
+				return (last - now) * 20;
 		}
 	}
 
@@ -82,7 +82,7 @@
 		padding: 1rem;
 		border: 2px solid black;
 		border-radius: 2rem;
-		margin-top: auto;
+		margin: auto 0 1rem;
 		background-color: white;
 	}
 	.player > *:not(:last-child) {
